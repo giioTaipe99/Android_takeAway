@@ -53,7 +53,7 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onFailure(Call<List<Products>> call, Throwable t) {
-                Log.d("falla", "falla productos");
+                Log.d("msg", "no llega");
             }
 
         });
