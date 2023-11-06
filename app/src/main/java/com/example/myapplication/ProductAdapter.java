@@ -1,9 +1,11 @@
 package com.example.myapplication;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -12,16 +14,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductViewHolder> {
 
     private List<Products> products;
-
     public void setProducts(List<Products> products) {
 
         this.products = products;
-
         notifyDataSetChanged(); // Notifica al adaptador que los datos han cambiado
     }
 
@@ -52,7 +53,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
         private TextView productNameTextView;
         private TextView productDescriptionTextView;
         private TextView priceProduct;
-
+        private Button btnAfegir;
 
         public ProductViewHolder(@NonNull View itemView) {
             super(itemView);
@@ -60,6 +61,7 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productNameTextView = itemView.findViewById(R.id.nameProduct);
             productDescriptionTextView = itemView.findViewById(R.id.description);
             priceProduct = itemView.findViewById(R.id.price);
+            btnAfegir = itemView.findViewById(R.id.btn);
         }
 
         public void bind(Products product) {
@@ -69,6 +71,15 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             productNameTextView.setText(product.getName());
             productDescriptionTextView.setText(product.getDescription());
             priceProduct.setText("Preu: " + String.valueOf(product.getPrice())+"€");
+            btnAfegir.setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+
+                    Intent intent = new Intent(v.getContext(), Carrito.class);
+                    intent.putExtra("Product", product);
+                    v.getContext().startActivity(intent);
+                }
+            });
         }
     }
 }
