@@ -31,7 +31,7 @@ public class Products implements Serializable {
         return description;
     }
 
-    public double getPrice() {
+    public Double getPrice() {
         return price;
     }
 

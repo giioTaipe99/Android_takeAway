@@ -14,4 +14,6 @@ public interface InterfaceAPI {
     Call<List<Products>> getProducts();
     @GET("http://192.168.1.74:3001/getUserDetails")
     Call<UserDetails> getUserDetails();
+    @POST("http://192.168.1.74:3001//postOrders")
+    Call<List<OrderProducts>> createOrders(@Body List<OrderProducts> orders);
 }

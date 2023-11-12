@@ -49,6 +49,7 @@
         android:backgroundTint="@color/white"
         android:contentDescription="btn"
         android:scaleType="centerCrop"
+        android:onClick="shoppingBasket"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.816"

@@ -74,12 +74,12 @@ public class ProductAdapter extends RecyclerView.Adapter<ProductAdapter.ProductV
             btnAfegir.setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
-
-                    Intent intent = new Intent(v.getContext(), Carrito.class);
-                    intent.putExtra("Product", product);
-                    v.getContext().startActivity(intent);
+                    if (v.getContext() instanceof MainActivity) {
+                        ((MainActivity) v.getContext()).addToCart(product);
+                    }
                 }
             });
+            Log.d("AdapterProducts", product.getName());
         }
     }
 }
